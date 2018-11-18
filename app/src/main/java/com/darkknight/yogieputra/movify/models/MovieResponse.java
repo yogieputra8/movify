@@ -20,13 +20,6 @@ public class MovieResponse {
     @Expose
     private List<Result> results = null;
 
-    public MovieResponse(Integer page, Integer totalResults, Integer totalPages, List<Result> results){
-        this.page = page;
-        this.totalResults = totalResults;
-        this.totalPages = totalPages;
-        this.results = results;
-    }
-
 
     public Integer getPage() {
         return page;
