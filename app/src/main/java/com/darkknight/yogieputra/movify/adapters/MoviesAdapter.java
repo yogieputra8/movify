@@ -17,6 +17,7 @@ import java.util.List;
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
     private Context context;
     private List<Result> movieList;
+    private static final String BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500/";
 
     public MoviesAdapter(Context context, List<Result> movieList) {
         this.context = context;
@@ -32,10 +33,11 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.tvTitle.setText(movieList.get(position).getTitle());
-        holder.tvOverview.setText(movieList.get(position).getOverview());
-        holder.tvReleaseDate.setText(movieList.get(position).getReleaseDate());
-        Glide.with(context).load("https://image.tmdb.org/t/p/w500/" + movieList.get(position).getPosterPath()).into(holder.ivMovie);
+        Result result = movieList.get(position);
+        holder.tvTitle.setText(result.getTitle());
+        holder.tvOverview.setText(result.getOverview());
+        holder.tvReleaseDate.setText(result.getReleaseDate());
+        Glide.with(context).load(BASE_IMAGE_URL + result.getPosterPath()).into(holder.ivMovie);
     }
 
     @Override
